@@ -32,13 +32,14 @@ public class twtr {
 				
 		query.setQuery("メッシ");   // 検索ワードをセット
 		query.setLang("ja");      //日本語で検索
-	 　 query.setCount(100);　　　//1度のリクエストで取得するTweetの数（100が最大）
+	 　     query.setCount(100);　　　//1度のリクエストで取得するTweetの数（100が最大）
 
-	    for (int i = 1; i <= 15; i++); 　// 最大1500件,15回ループ
+	        for (int i = 1; i <= 15; i++); 　// 最大1500件,15回ループ
+		query.setSinceId(i);
 		QueryResult result = twitter.search(query);
 
 		System.out.println("ヒット数 : " + result.getTweets().size());
-		
+		System.out.println("ページ数 : " + new Integer(i).toString());
 		 
 				//検索結果を見る
 		for (Status tweet : result.getTweets()) {
@@ -71,9 +72,8 @@ public class twtr {
             System.out.println("ID:"+tweet.getId());
             System.out.println("本文:" + Str.replace("\\n", ""));
             System.out.println("RT数:"+tweet.getRetweetCount());
-			System.out.println("RET数:" +  tweet.getRetweetCount() + " FAV数:" +  tweet.getFavoriteCount());
+	        System.out.println("RET数:" +  tweet.getRetweetCount() + " FAV数:" +  tweet.getFavoriteCount());
             System.out.println("Place:" + "_" );
-          
             System.out.println("Twitter URL:" + url);
             
             pw.flush();
@@ -82,7 +82,7 @@ public class twtr {
             pw.println("ID:"+tweet.getId());
             pw.println("本文:" + Str.replace("\\n", ""));
             pw.println("RT数:"+tweet.getRetweetCount());
-			pw.println("RET数:" +  tweet.getRetweetCount() + " FAV数:" +  tweet.getFavoriteCount());
+	        pw.println("RET数:" +  tweet.getRetweetCount() + " FAV数:" +  tweet.getFavoriteCount());
             pw.println("Place:" + "_" );
             pw.println("Twitter URL:" + url);
 	    }
