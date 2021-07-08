@@ -40,12 +40,12 @@ public class twtr {
 
 		query.setQuery("東京五輪");   // 検索ワードをセット
 		query.setLang("ja");        //日本語のTweetだけ検索
-	    query.setCount(100);        // 1度のリクエストで取得するTweetの数（100が最大）
-	    //query.setQuery("filter:media");
+	        query.setCount(100);        // 1度のリクエストで取得するTweetの数（100が最大）
+	        //query.setQuery("filter:media");
 	    
-	    for (int i = 1; i <= 15; i++) {     // 最大1500件（15ページ）なので15回ループ
-	    query.setSinceId(i);
-		QueryResult result = twitter.search(query); // 検索実行
+	        for (int i = 1; i <= 15; i++) {     // 最大1500件（15ページ）なので15回ループ
+	        query.setSinceId(i);
+	        QueryResult result = twitter.search(query); // 検索実行
 
 		System.out.println("ヒット数 : " + result.getTweets().size());
 		System.out.println("ページ数 : " + new Integer(i).toString());
@@ -73,19 +73,18 @@ public class twtr {
 				  System.out.println(location);
 				}
 		  
-		    String url1= "https://twitter.com/" + tweet.getUser().getScreenName() 
-			     + "/status/" + tweet.getId();
-			URLEntity[] urls = tweet.getURLEntities();
+            String url1= "https://twitter.com/" + tweet.getUser().getScreenName() + "/status/" + tweet.getId();
+	        URLEntity[] urls = tweet.getURLEntities();
             for(URLEntity urlEntity : urls) {
-               String url = urlEntity.getURL();
+            String url = urlEntity.getURL();
                
                
        		
-			System.out.println("日時:"+tweet.getCreatedAt());
+	        System.out.println("日時:"+tweet.getCreatedAt());
             System.out.println("ID:"+tweet.getId());
             System.out.println("本文:" + Str.replace("\\n", ""));
             System.out.println("RT数:"+tweet.getRetweetCount());
-			System.out.println("RET数:" +  tweet.getRetweetCount() + " FAV数:" +  tweet.getFavoriteCount());
+	        System.out.println("RET数:" +  tweet.getRetweetCount() + " FAV数:" +  tweet.getFavoriteCount());
             System.out.println("Place:" + "_" );
             System.out.println("TWJ-Client-{0.0.0}" +url);
             System.out.println("Twitter URL:" + url1);
@@ -96,7 +95,7 @@ public class twtr {
             pw.println("ID:"+tweet.getId());
             pw.println("本文:" + Str.replace("\\n", ""));
             pw.println("RT数:"+tweet.getRetweetCount());
-			pw.println("RET数:" +  tweet.getRetweetCount() + " FAV数:" +  tweet.getFavoriteCount());
+	        pw.println("RET数:" +  tweet.getRetweetCount() + " FAV数:" +  tweet.getFavoriteCount());
             pw.println("Place:" + "_" );
             pw.println("TWJ-Client-{0.0.0}" +url);
             pw.println("Twitter URL:" + url1);
